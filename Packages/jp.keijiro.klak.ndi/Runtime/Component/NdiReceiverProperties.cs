@@ -36,6 +36,16 @@ public sealed partial class NdiReceiver : MonoBehaviour
 
     #endregion
 
+    #region Blit Material settings
+
+    [SerializeField] Material _sourceBlitMaterial = null;
+
+    public Material sourceBlitMaterial
+      { get => _sourceBlitMaterial;
+        set => _sourceBlitMaterial = value; }
+        
+    #endregion
+
     #region Runtime property
 
     public RenderTexture texture => _converter?.LastDecoderOutput;

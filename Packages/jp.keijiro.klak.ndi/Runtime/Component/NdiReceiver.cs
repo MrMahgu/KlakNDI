@@ -88,8 +88,10 @@ public sealed partial class NdiReceiver : MonoBehaviour
         }
 
         // External texture update
-        if (_targetTexture != null)
+        if (_targetTexture != null && _sourceBlitMaterial == null)
             Graphics.Blit(rt, _targetTexture);
+        else if (_targetTexture != null && _sourceBlitMaterial != null)
+            Graphics.Blit(rt, _targetTexture, _sourceBlitMaterial);
     }
 
     #endregion
