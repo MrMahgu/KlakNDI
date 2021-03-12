@@ -10,6 +10,7 @@ sealed class NdiReceiverEditor : UnityEditor.Editor
     SerializedProperty _ndiName;
     SerializedProperty _targetTexture;
     SerializedProperty _sourceBlitMaterial;
+    SerializedProperty _targetBlitTexture;
     SerializedProperty _targetRenderer;
     SerializedProperty _targetMaterialProperty;
 
@@ -62,6 +63,7 @@ sealed class NdiReceiverEditor : UnityEditor.Editor
         _ndiName = finder["_ndiName"];
         _targetTexture = finder["_targetTexture"];
         _sourceBlitMaterial = finder["_sourceBlitMaterial"];
+        _targetBlitTexture = finder["_targetBlitTexture"];
         _targetRenderer = finder["_targetRenderer"];
         _targetMaterialProperty = finder["_targetMaterialProperty"];
     }
@@ -87,6 +89,7 @@ sealed class NdiReceiverEditor : UnityEditor.Editor
         // Target texture/renderer
         EditorGUILayout.PropertyField(_targetTexture);
         EditorGUILayout.PropertyField(_sourceBlitMaterial);
+        EditorGUILayout.PropertyField(_targetBlitTexture);
         EditorGUILayout.PropertyField(_targetRenderer);
 
         EditorGUI.indentLevel++;

@@ -87,11 +87,22 @@ public sealed partial class NdiReceiver : MonoBehaviour
             _targetRenderer.SetPropertyBlock(_override);
         }
 
-        // External texture update
-        if (_targetTexture != null && _sourceBlitMaterial == null)
+        // Basic External texture update
+        if (_targetTexture != null && _sourceBlitMaterial == null) {
             Graphics.Blit(rt, _targetTexture);
-        else if (_targetTexture != null && _sourceBlitMaterial != null)
+            return;
+        }
+
+        // Write direct to output with material
+        if (_targetTexture != null && _sourceBlitMaterial != null && _targetBlitTexture == null) {
             Graphics.Blit(rt, _targetTexture, _sourceBlitMaterial);
+        } else
+        // Write clean output and blitted output as two seperate textures
+        if (_targetTexture != null && _sourceBlitMaterial != null && _targetBlitTexture != null) {
+            Graphics.Blit(rt, _targetTexture);
+            Graphics.Blit(rt, _targetBlitTexture, _sourceBlitMaterial);
+        }
+            
     }
 
     #endregion
